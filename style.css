@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222; /* خلفية الصفحة خارج اللعبة */
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+.game-container {
+    width: 95%;
+    max-width: 600px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    /* هنا بنحط خلفية صنعاء */
+    background-image: url('sanaa.jpg');
+    background-size: contain;
+    border-bottom: 4px solid #3e2723;
+    /* حركة الخلفية المستمرة */
+    animation: backgroundScroll 10s linear infinite;
+}
+
+/* حركة تخلي خلفية صنعاء تمشي */
+@keyframes backgroundScroll {
+    from { background-position: 0 0; }
+    to { background-position: -600px 0; }
+}
+
+#character {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    /* هنا بنحط صورة البطل */
+    background-image: url('player.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+#obstacle {
+    width: 30px;
+    height: 30px;
+    background-color: #795548; /* لون مؤقت للحاجز */
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    right: -30px;
+}
+
+.score {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+/* حركات القفز والحاجز كما هي */
+.animate-jump {
+    animation: jump 0.4s;
+}
+
+@keyframes jump {
+    0% {bottom: 0;}
+    30% {bottom: 100px;}
+    70% {bottom: 100px;}
+    100% {bottom: 0;}
+}
+
+.obstacle-move {
+    animation: move 1.5s infinite linear;
+}
+
+@keyframes move {
+    0% {right: -30px;}
+    100% {right: 100%;}
+}
